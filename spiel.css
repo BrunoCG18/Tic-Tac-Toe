@@ -1,0 +1,135 @@
+body{
+    font: normal 15pt Arial;
+    background-color: cornsilk;
+    text-align: center;
+}
+h1{
+    font: italic 50px normal;
+    background: rgb(183, 202, 238);
+    border-radius: 5px;
+    padding: 1%;
+    margin: auto;
+    display: inline-block;
+}
+
+
+#start{
+    background-color: white;
+    display: inline-block;
+    padding: 1%;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+#howToPlay{
+    background-color: white;
+    padding: 1%;
+    display:inline-block;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#textPlay{
+    width: 35%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    margin-top: 3%;
+    font-size: 120%;
+}
+
+.cell{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.table{
+    width: 99vw;
+    height: 76vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);  
+    font-size: 180px;  
+}
+
+#a1 {
+    border-left: none;
+    border-top: none;
+}
+
+#a2 {
+    border-top: none;
+}
+
+#a3 {
+    border-top: none;
+    border-right: none;
+}
+
+#b1 {
+    border-left: none;
+}
+
+#b3 {
+    border-right: none;
+}
+
+#c1 {
+    border-left: none;
+    border-bottom: none;
+}
+
+#c2{
+    border-bottom: none;
+}
+
+#c3{
+    border-bottom: none;
+    border-right: none;
+}
+
+footer {
+    background-color: rgb(183, 202, 238);
+    bottom: 0;
+    position: absolute;
+    width: 99%; 
+    margin: 0 1% 0 0;    
+}
+
+#winner{
+    position: fixed;
+    bottom: 50%;
+    right: 10%;
+    font-size: 70px;
+    width: 500px;
+    padding: 2%;
+    border-radius: 10px;
+    text-align: center;
+    margin: auto;
+    
+}
+
+#restart{
+    position: fixed;
+    bottom: 35%;
+    right: 20%;
+    background-color: rgb(183, 202, 238);
+    padding: 1%;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor:pointer;
+    font-size: 20px;
+    
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spiel T-Kurs</title>
+        <link rel= "stylesheet" href="spiel.css">
+        <img url = "floresta.jpg">
+        <img url = "x.jpg" id="x_foto">
+        <img url = "o.jpg" id="o_foto">
+
+    </head>    
+    <body>
+        <header>
+            <h1 class = "title"> <strong>Tic-Tac-Toe</strong> </h1>
+        
+        </header>
+        <div class="menu" id="menu">
+            <p class="start" id="start"> Jetzt Spielen</p>
+            <p id = "howToPlay"> Spielanleitung </p>
+            <p id = "textPlay" > </p>
+            <!--<p> Die beiden Spieler setzen abwechselnd ihr Zeichen(also Kreuze und 
+                Kreise) in die freien Kästchen des Spielfelds. Ziel ist es, das eigene Zeichen dreie Mal
+                in einer Zeile, in einer Spalte oder in einer Diagonale zua platzieren. Wem das zuerst
+                geling, hat gewonnen.
+            </p>-->
+        </div>
+        <div id="menu_end"></div>
+            <p id="winner"></p>
+            <input type="button" id='restart' value="Nochmal abspielen" onclick="window.location.reload()">
+        </div>
+
+        <div class="table" id="table">
+            <div class="cell" id="a1"></div>
+            <div class="cell" id="a2"></div>
+            <div class="cell" id="a3"></div>
+            <div class="cell" id="b1"></div>
+            <div class="cell" id="b2"></div>
+            <div class="cell" id="b3"></div>
+            <div class="cell" id="c1"></div>
+            <div class="cell" id="c2"></div>
+            <div class="cell" id="c3"></div>
+        </div>
+
+        <footer>
+            <p>&copy; Tic-Tac-Toe T Kurs</p>
+            <p>Bruno Grisolia, Lucas Cupolillo</p>
+        </footer>
+        <script>
+
+            document.getElementById('table').style.display = "none"
+            document.getElementById('restart').style.display = "none"
+
+            var a1 = document.getElementById('a1')
+            var a2 = document.getElementById('a2')
+            var a3 = document.getElementById('a3')
+
+            var b1 = document.getElementById('b1')
+            var b2 = document.getElementById('b2')
+            var b3 = document.getElementById('b3')
+
+            var c1 = document.getElementById('c1')
+            var c2 = document.getElementById('c2')
+            var c3 = document.getElementById('c3')
+            
+            function main () {
+                start.innerHTML = 'Los geht`s!'
+                document.getElementById('table').style.display = ""
+                document.getElementById('menu').style.display = "none"
+                k = 0
+
+                setup()
+                a1.addEventListener('click', choosing_a1)
+                a2.addEventListener('click', choosing_a2)
+                a3.addEventListener('click', choosing_a3)
+
+                b1.addEventListener('click', choosing_b1)
+                b2.addEventListener('click', choosing_b2)
+                b3.addEventListener('click', choosing_b3)
+
+                c1.addEventListener('click', choosing_c1)
+                c2.addEventListener('click', choosing_c2)
+                c3.addEventListener('click', choosing_c3)
+
+                document.body.addEventListener('click', Jmd_Win)
+
+                function choosing_a1() {
+                    a1.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_a2() {
+                    a2.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_a3() {
+                    a3.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_b1() {
+                    b1.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_b2() {
+                    b2.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_b3() {
+                    b3.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_c1() {
+                    c1.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_c2() {
+                    c2.innerText = currentPlayer
+                    swapPlayer()
+                }
+                function choosing_c3() {
+                    c3.innerText = currentPlayer
+                    swapPlayer()
+                }
+
+                function Jmd_Win() {
+                    if ((a1.innerText == a2.innerText) && (a2.innerText == a3.innerText) && a1.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((b1.innerText == b2.innerText) && (b2.innerText == b3.innerText) && b1.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((c1.innerText == c2.innerText) && (c2.innerText == c3.innerText) && c1.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((a1.innerText == b2.innerText) && (b2.innerText == c3.innerText) && a1.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((a3.innerText == b2.innerText ) && (b2.innerText == c1.innerText) && a3.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((a1.innerText == b1.innerText) && (b1.innerText == c1.innerText) && a1.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((a2.innerText == b2.innerText) && (b2.innerText == c2.innerText) && a2.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if ((a3.innerText == b3.innerText) && (b3.innerText == c3.innerText) && a3.innerText != '') {
+                        swapPlayer()
+                        winner()
+                    } else if (a1.innerText != '' && a2.innerText != '' && a3.innerText != '' && b1.innerText != '' && b2.innerText != '' && b3.innerText != '' && c1.innerText != '' && c2.innerText != '' && c3.innerText != '') {
+                        tie()
+                    }
+                }
+
+                function winner () {
+                    winner = document.getElementById('winner')
+                    winner.innerHTML = `Der Spieler <strong>${currentPlayer}</strong> hat gewonnen!`
+                    winner.style.background = '#bacaee'
+                    table = document.getElementById('table')
+                    table.style.width = '45vw'
+                    table.style.height = '75vh'
+                    document.getElementById('restart').style.display = ""
+                }
+
+                function tie() {
+                    winner = document.getElementById('winner')
+                    winner.innerHTML = `Es war ein Unentschieden `
+                    winner.style.background = '#bacaee'
+                    table = document.getElementById('table')
+                    table.style.width = '45vw'
+                    table.style.height = '75vh'
+                    document.getElementById('restart').style.display = ""
+                }
+
+                document.getElementById('restart')
+                restart.addEventListener('click', restart)
+                function restart () {
+                    a1.innerText = ""
+                    a2.innerText = ""
+                    a3.innerText = ""
+                    b1.innerText = ""
+                    b1.innerText = ""
+                    b3.innerText = ""
+                    c1.innerText = ""
+                    c2.innerText = ""
+                    c3.innerText = ""
+                    table.style.width = '99vw'
+                    table.style.height = '76vh'
+                    winner.innerHTML = ""
+                    winner.style.background = ""
+                    main()
+                }
+
+                
+            }
+            
+            var txtSpielanleitung = document.getElementById("howToPlay")
+            txtSpielanleitung.addEventListener("click",textHowToPlay)
+            function textHowToPlay(){
+                document.getElementById("textPlay").innerHTML = 'Die beiden Spieler setzen abwechselnd ihr Zeichen(also Kreuze und  Kreise) in die freien Kästchen des Spielfelds. Ziel ist es, das eigene Zeichen dreie Mal in einer Zeile, in einer Spalte oder in einer Diagonale zu platzieren. Wem das zuerst geling, hat gewonnen.';
+            }
+
+            var players = ['X', 'O']
+            let currentPlayer 
+            function setup() {
+                if (Math.random(1) < 0.5) {
+                    currentPlayer = players[0]
+                        
+                } else {
+                    currentPlayer = players[1]
+                }
+            }
+
+
+            function swapPlayer() {
+                    if (currentPlayer == 'X') {
+                        currentPlayer = 'O'
+                    } else if (currentPlayer == 'O'){
+                        currentPlayer = 'X'
+                    }
+                }
+
+            
+            var start = document.getElementById('start')
+            start.addEventListener("click", main)
+        </script>
+
+
+    </body>
+</html>
